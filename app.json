@@ -1,8 +1,11 @@
 {
   "expo": {
     "name": "URBE ACESSÍVEL",
-    "slug": "Desenvolvido para ajudar pessoas com algum tipo de deficiência, mostrando lugares acessíveis na cidade.",
-    "version": "1.0.0",
+    "slug": "urbe-acessivel",
+    "description": "Desenvolvido para ajudar pessoas com algum tipo de deficiência, mostrando lugares acessíveis na cidade.",
+    "privacy": "public",
+    "version": "0.0.1",
+    "platforms": ["android"],
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -17,9 +20,6 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "ios": {
-      "supportsTablet": true
-    },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
