@@ -1,18 +1,21 @@
-import { StyleSheet, Text, View } from 'react-native';
+import styled from 'styled-components/native';
+
+const Div = styled.View`
+  flex: 1;
+  background-color: #fff;
+  align-items: center;
+  justify-content: center;
+`;
+
+const TextField = styled.Text`
+  font-size: 16px;
+`;
+
 
 export default function IndexApp() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
+    <Div>
+      <TextField>Open up App.tsx to start working on your app!</TextField>
+    </Div>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
