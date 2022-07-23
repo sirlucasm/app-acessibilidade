@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import Navigation from './navigations';
 
 const Div = styled.View`
   flex: 1;
@@ -13,9 +14,5 @@ const TextField = styled.Text`
 
 
 export default function IndexApp() {
-  return (
-    <Div>
-      <TextField>Open up App.tsx to start working on your app!</TextField>
-    </Div>
-  );
+  return <Navigation />
 }
