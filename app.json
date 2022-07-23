@@ -2,7 +2,7 @@
   "expo": {
     "name": "URBE ACESSÍVEL",
     "slug": "urbe-acessivel",
-    "description": "Desenvolvido para ajudar pessoas com algum tipo de deficiência, mostrando lugares acessíveis na cidade.",
+    "description": "Plataforma de acessibilidade na mobilidade urbana de idosos, crianças, pessoas obesas e pessoas com algum tipo de deficiência visual ou motora.",
     "privacy": "public",
     "version": "0.0.1",
     "platforms": ["android"],
