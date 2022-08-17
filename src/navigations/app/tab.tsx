@@ -1,5 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigateStack, ProfileStack } from './stack';
+import Navigate from '../../screens/app/navigate';
+import Profile from '../../screens/app/profile';
 
 const Tab = createBottomTabNavigator();
 
@@ -10,8 +11,8 @@ export const AppTab = () => {
         headerShown: false,
       }}
     >
-      <Tab.Screen name="ProfileStack" component={ProfileStack} />
-      <Tab.Screen name="NavigateStack" component={NavigateStack} />
+      <Tab.Screen name="ProfileTab" component={Profile} />
+      <Tab.Screen name="NavigateTab" component={Navigate} />
     </Tab.Navigator>
   );
 }

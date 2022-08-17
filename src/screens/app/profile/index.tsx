@@ -1,6 +1,6 @@
 import { Text, View } from 'react-native';
-import { Container } from '../../../components/atoms/container';
-import { TopHeader } from '../../../components/organisms/topHeader';
+import { Container } from '../../../styles/container';
+import { TopHeader } from '../../../components/TopHeader';
 
 const Home = () => {
   return (

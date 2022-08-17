@@ -11,10 +11,11 @@ const Image = styled.Image`
 const QuestionBtn = styled.TouchableOpacity`
   background-color: ${BLACK};
   border-radius: 50px;
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   justify-content: center;
   align-items: center;
+  top: 4px;
 `;
 
 const QuestionBtnArea = styled.View`
@@ -27,7 +28,7 @@ const Div = styled.View`
   justify-content: space-between;
   padding: 0 20px;
   background-color: #fff;
-  height: 60px;
+  height: 70px;
   align-items: center;
 `;
 
@@ -40,8 +41,8 @@ export const TopHeader = () => {
         resizeMode="contain"
       />
       <QuestionBtnArea>
-        <QuestionBtn>
-          <Ionicons name="help-circle-outline" size={26} color={WHITE} />
+        <QuestionBtn activeOpacity={.7}>
+          <Ionicons name="help-circle-outline" size={24} color={WHITE} />
         </QuestionBtn>
       </QuestionBtnArea>
       <StatusBar backgroundColor={WHITE} style='dark' />

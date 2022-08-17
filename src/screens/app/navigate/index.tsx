@@ -1,10 +1,13 @@
 import { Text, View } from 'react-native';
+import { TopHeader } from '../../../components/TopHeader';
+import { Container } from '../../../styles/container';
 
 const Navigate = () => {
   return (
-    <View>
+    <Container>
+      <TopHeader />
       <Text>Navigate</Text>
-    </View>
+    </Container>
   )
 }
 

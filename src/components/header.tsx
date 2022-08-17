@@ -1,4 +1,4 @@
-import { Container } from "../atoms/container"
+import { Container } from "../styles/container"
 
 export const Header = () => {
   return (
