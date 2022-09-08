@@ -1,5 +1,8 @@
 import { LogBox } from 'react-native';
+import { useFonts } from 'expo-font';
 import IndexApp from "./src";
+import AppLoading from '@components/AppLoading';
+import { NativeBaseProvider } from "native-base";
 
 LogBox.ignoreLogs([
   'AsyncStorage',
@@ -9,5 +12,15 @@ LogBox.ignoreLogs([
 ]);
 
 export default function App() {
-  return <IndexApp />;
+  const [fontsLoaded] = useFonts({
+    'Happy Monkey': require('./assets/fonts/HappyMonkey-Regular.ttf'),
+  });
+
+  if (!fontsLoaded) return <AppLoading />;
+
+  return (
+    <NativeBaseProvider>
+      <IndexApp />
+    </NativeBaseProvider>
+  );
 }

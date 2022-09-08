@@ -17,7 +17,14 @@
     "downlevelIteration": true,
     "noUnusedParameters": false,
     "noUnusedLocals": false,
-    "incremental": true
+    "incremental": true,
+    "baseUrl": "./",
+    "paths": {
+      "@components/*": ["./src/components/*"],
+      "@screens/*": ["./src/screens/*"],
+      "@styles/*": ["./src/styles/*"],
+      "@assets/*": ["./assets/*"],
+    }
   },
   "exclude": [
     "node_modules",
@@ -36,5 +43,5 @@
     "**/*",
     ".d.ts",
     "next-env.d.ts",
-  ]
+  ],
 }
