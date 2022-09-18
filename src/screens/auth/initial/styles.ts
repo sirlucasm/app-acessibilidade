@@ -1,9 +1,9 @@
 import styled from "styled-components/native";
 import { PRIMARY, WHITE } from '@styles/colors';
+import { Container as StyledContainer } from "@styles/container";
+import { fontPixel, pixelSizeVertical } from "src/utils/normalize";
 
-export const Container = styled.View`
-  padding-top: 24px;
-  flex: 1;
+export const Container: any = styled(StyledContainer)`
   align-items: center;
   background-color: ${WHITE};
 `;
@@ -12,20 +12,20 @@ export const HeaderArea = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
-  margin-bottom: 120px;
+  margin-bottom: ${pixelSizeVertical(120)}px;
 `;
 
 export const LogoArea = styled.View`
-  margin-bottom: 30px;
+  margin-bottom: ${pixelSizeVertical(30)}px;
 `;
 
 export const Logo = styled.Text`
   font-family: 'Happy Monkey';
-  font-size: 22px;
+  font-size: ${fontPixel(22)}px;
 `;
 
 export const BackgroundArea = styled.View`
-  margin-top: 30px;
+  margin-top: ${pixelSizeVertical(30)}px;
 `;
 
 export const YellowBackgroundArea = styled.View`
