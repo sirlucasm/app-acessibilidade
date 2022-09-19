@@ -5,7 +5,6 @@ import {
   FIREBASE_STORAGE_BUCKET,
   FIREBASE_MESSAGING_SENDER_ID,
   FIREBASE_APP_ID,
-  FIREBASE_MEASUREMENT_ID
 } from '@env';
 
 import { getApp, getApps, initializeApp } from 'firebase/app';

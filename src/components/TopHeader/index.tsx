@@ -37,7 +37,7 @@ export const TopHeader = () => {
     <Div>
       <View><Text></Text></View>
       <Image
-        source={require('../../assets/images/logo_cesmac.png')}
+        source={require('assets/images/logo_cesmac.png')}
         resizeMode="contain"
       />
       <QuestionBtnArea>

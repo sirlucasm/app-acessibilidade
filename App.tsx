@@ -1,11 +1,13 @@
-import { LogBox } from 'react-native';
-import { useFonts } from 'expo-font';
-import IndexApp from "./src";
 import AppLoading from '@components/AppLoading';
-import { NativeBaseProvider } from "native-base";
+import { useFonts } from 'expo-font';
+import { NativeBaseProvider } from 'native-base';
+import { LogBox } from 'react-native';
+import { AuthProvider } from 'src/contexts/auth-context';
+
+import Navigations from './src/navigations';
 
 LogBox.ignoreLogs([
-  'AsyncStorage',
+  'AsyncStorage has been extracted',
   'Setting a timer',
   'Found screens',
   'Non-serializable values were found in the navigation state',
@@ -20,7 +22,9 @@ export default function App() {
 
   return (
     <NativeBaseProvider>
-      <IndexApp />
+      <AuthProvider>
+        <Navigations />
+      </AuthProvider>
     </NativeBaseProvider>
   );
 }
