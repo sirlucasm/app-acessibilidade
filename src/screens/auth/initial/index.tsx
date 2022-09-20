@@ -3,6 +3,7 @@ import { Box, Button } from 'native-base';
 import { BackgroundArea, Container, HeaderArea, Logo, LogoArea, YellowBackgroundArea } from "./styles";
 import { AntDesign } from '@expo/vector-icons';
 import { NavigationProp } from '@react-navigation/native';
+import { heightPixel, widthPixel } from 'src/utils/normalize';
 
 interface InitialProps {
   navigation: NavigationProp<any, 'Initial'>;
@@ -29,8 +30,8 @@ export const Initial = ({ navigation }: InitialProps) => {
             onPress={() => navigation.navigate('Login')}
             style={{
               backgroundColor: '#1283C6',
-              height: 45,
-              width: 186,
+              height: heightPixel(42),
+              width: widthPixel(186),
               borderRadius: 12
             }}
             leftIcon={<AntDesign name="login" size={24} color="#fcfcfc" />}
@@ -47,8 +48,8 @@ export const Initial = ({ navigation }: InitialProps) => {
             onPress={() => navigation.navigate('SignUp')}
             style={{
               backgroundColor: '#fcfcfc',
-              height: 45,
-              width: 186,
+              height: heightPixel(42),
+              width: widthPixel(186),
               borderRadius: 12
             }}
             leftIcon={<AntDesign name="adduser" size={24} color="#323232" />}
