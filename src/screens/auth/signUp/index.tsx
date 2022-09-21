@@ -17,12 +17,14 @@ import {
   CesmacLogoArea
 } from './style'
 import { Formik } from 'formik';
+import useAuthContext from 'src/contexts/auth-context/useAuthContext';
 
 interface SignUpProps {
   navigation: NavigationProp<any, 'Initial'>;
 }
 
 const SignUp = ({ navigation }: SignUpProps) => {
+  const { signUp } = useAuthContext();
   const handleBack = () => {
     navigation.goBack();
   }
@@ -52,7 +54,7 @@ const SignUp = ({ navigation }: SignUpProps) => {
             name: '',
             password: '',
           }}
-          onSubmit={values => console.log(values)}
+          onSubmit={values => signUp(values)}
         >
           {({ handleChange, handleBlur, handleSubmit, values }) => (
             <>
