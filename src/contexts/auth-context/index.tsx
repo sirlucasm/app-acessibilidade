@@ -22,17 +22,38 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
           displayName: name,
         });
         const docRef = doc(firestore, 'users', user.uid);
-        await setDoc(docRef, { email, name });
+        await setDoc(docRef, { email, name, uid: user.uid });
         setCurrentUser(user);
       }
     } catch(error: any) {
+      console.error(`[AuthContext::signUp] Não foi possível criar a conta - Erro:\n${JSON.stringify(error)}`)
       Alert.alert('Erro', error.message)
     }
   }
 
-  const login = (params: LoginUser) => {}
+  const login = async ({ email, password }: LoginUser) => {
+    try {
+      const { user } = await signInWithEmailAndPassword(auth, email, password);
 
-  const logout = () => {}
+      if (user) {
+        await AsyncStorage.setItem('@urbe.user', JSON.stringify({ email, password }));
+        setCurrentUser(user);
+      }
+    } catch(error: any) {
+      console.error(`[AuthContext::login] Não foi possível realizar login - Erro:\n${JSON.stringify(error)}`)
+      Alert.alert('Erro', error.message)
+    }
+  }
+
+  const logout = async () => {
+    try {
+      await auth.signOut();
+      await AsyncStorage.removeItem('@urbe.user');
+      setCurrentUser(null);
+    } catch(error: any) {
+      throw new Error(`[AuthContext::logout] Não foi possível realizar logout - Erro:\n${JSON.stringify(error)}`)
+    }
+  }
 
   const fetchCurrentUser = useCallback(async () => {
     const user = auth.currentUser;

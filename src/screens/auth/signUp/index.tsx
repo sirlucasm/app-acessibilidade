@@ -1,7 +1,6 @@
 import { Input } from '@components/Inputs';
 import { AntDesign, Feather } from '@expo/vector-icons'
 import { NavigationProp } from '@react-navigation/native';
-import { GRAY_DARK, GRAY_LIGHT, GRAY_MEDIUM } from '@styles/colors';
 import { Image } from 'react-native'
 import { Button } from 'native-base'
 import { fontPixel, heightPixel, widthPixel } from 'src/utils/normalize'
@@ -20,7 +19,7 @@ import { Formik } from 'formik';
 import useAuthContext from 'src/contexts/auth-context/useAuthContext';
 
 interface SignUpProps {
-  navigation: NavigationProp<any, 'Initial'>;
+  navigation: NavigationProp<any, 'SignUp'>;
 }
 
 const SignUp = ({ navigation }: SignUpProps) => {
@@ -56,7 +55,7 @@ const SignUp = ({ navigation }: SignUpProps) => {
           }}
           onSubmit={values => signUp(values)}
         >
-          {({ handleChange, handleBlur, handleSubmit, values }) => (
+          {({ handleChange, handleBlur, handleSubmit }) => (
             <>
               <Input
                 placeholder='Email'

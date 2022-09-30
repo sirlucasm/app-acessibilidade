@@ -1,13 +1,22 @@
-import { Text, View } from 'react-native';
-import { TopHeader } from '../../../components/TopHeader';
-import { Container } from '../../../styles/container';
+import { Button } from 'native-base';
+import { View } from 'react-native';
+import useAuthContext from 'src/contexts/auth-context/useAuthContext';
+import { TopHeader } from '@components/TopHeader';
+import { HeaderContainer } from '@styles/containers';
+
 
 const Navigate = () => {
+  const { logout } = useAuthContext()
+
   return (
-    <Container>
+    <HeaderContainer>
       <TopHeader />
-      <Text>Navigate</Text>
-    </Container>
+      <View style={{ marginTop: 40 }}>
+        <Button onPress={logout}>
+          Sair
+        </Button>
+      </View>
+    </HeaderContainer>
   )
 }
 

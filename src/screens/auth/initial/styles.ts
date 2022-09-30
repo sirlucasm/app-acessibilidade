@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
-import { PRIMARY, WHITE } from '@styles/colors';
-import { Container as StyledContainer } from "@styles/container";
+import { PRIMARY, WHITE } from "@styles/colors";
+import { Container as StyledContainer } from "@styles/containers";
 import { fontPixel, pixelSizeVertical } from "src/utils/normalize";
 
 export const Container: any = styled(StyledContainer)`
@@ -20,7 +20,7 @@ export const LogoArea = styled.View`
 `;
 
 export const Logo = styled.Text`
-  font-family: 'Happy Monkey';
+  font-family: "Happy Monkey";
   font-size: ${fontPixel(22)}px;
 `;
 
