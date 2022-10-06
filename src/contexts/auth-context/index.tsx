@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
           displayName: name,
         });
         const docRef = doc(firestore, 'users', user.uid);
-        await setDoc(docRef, { email, name, uid: user.uid });
+        await setDoc(docRef, { email, name, uid: user.uid, admin: false });
         setCurrentUser(user);
       }
     } catch(error: any) {

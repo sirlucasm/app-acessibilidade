@@ -1,6 +1,7 @@
 // APP
 export const PRIMARY = '#ffde59';
-export const SECONDARY = '#ebeff1';
+export const SECONDARY = 'rgb(242, 242, 242)';
+export const TERTIARY = '#ebeff1';
 export const WHITE = '#FFFFFF';
 export const BLACK = '#000000';
 
@@ -21,7 +22,7 @@ export const darkTheme = {
 
 // GRAYSCALE
 export const GRAY_LIGHT = '#e6e6e6';
-export const GRAY_MEDIUM = '#cacaca';
+export const GRAY_MEDIUM = '#a1a1a1';
 export const GRAY_DARK = '#323232';
 
 // ACTIONS

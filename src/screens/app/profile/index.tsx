@@ -2,7 +2,7 @@ import { Text, View } from 'react-native';
 import { HeaderContainer } from '@styles/containers';
 import { TopHeader } from '@components/TopHeader';
 
-const Home = () => {
+const Profile = () => {
   return (
     <HeaderContainer>
       <TopHeader />
@@ -11,4 +11,4 @@ const Home = () => {
   )
 }
 
-export default Home;
+export default Profile;
