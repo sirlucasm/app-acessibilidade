@@ -1,6 +1,6 @@
 import { Button } from 'native-base';
 import { View } from 'react-native';
-import useAuthContext from 'src/contexts/auth-context/useAuthContext';
+import useAuthContext from 'src/contexts/auth-context/use-auth-context';
 import { TopHeader } from '@components/TopHeader';
 import { HeaderContainer } from '@styles/containers';
 

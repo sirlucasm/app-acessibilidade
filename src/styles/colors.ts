@@ -1,9 +1,10 @@
 // APP
 export const PRIMARY = '#ffde59';
 export const SECONDARY = 'rgb(242, 242, 242)';
-export const TERTIARY = '#ebeff1';
+export const TERTIARY = '#f2f2f2';
 export const WHITE = '#FFFFFF';
 export const BLACK = '#000000';
+export const BLUE = '#0379BE';
 
 // THEME
 export const lightTheme = {

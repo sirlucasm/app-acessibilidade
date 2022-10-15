@@ -16,7 +16,7 @@ import {
   CesmacLogoArea
 } from './style'
 import { Formik } from 'formik';
-import useAuthContext from 'src/contexts/auth-context/useAuthContext';
+import useAuthContext from 'src/contexts/auth-context/use-auth-context';
 
 interface SignUpProps {
   navigation: NavigationProp<any, 'SignUp'>;

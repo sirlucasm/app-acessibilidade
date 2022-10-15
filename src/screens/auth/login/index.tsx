@@ -17,7 +17,7 @@ import {
 } from '../signUp/style'
 import { ForgetPasswordArea, ForgetPasswordText } from './styles';
 import { Formik } from "formik";
-import useAuthContext from 'src/contexts/auth-context/useAuthContext';
+import useAuthContext from 'src/contexts/auth-context/use-auth-context';
 import { NavigationProp } from '@react-navigation/native';
 
 interface LoginProps {

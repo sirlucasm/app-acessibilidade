@@ -1,5 +1,5 @@
 import { NavigationContainer } from "@react-navigation/native";
-import useAuthContext from "src/contexts/auth-context/useAuthContext";
+import useAuthContext from "src/contexts/auth-context/use-auth-context";
 import { AppStack } from "./app/stack";
 import { AuthStack } from "./auth";
 

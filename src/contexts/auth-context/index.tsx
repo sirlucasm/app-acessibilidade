@@ -5,7 +5,7 @@ import { PropsWithChildren, useEffect, useState, useCallback } from 'react';
 import { CreateUser, LoginUser } from 'src/@types/user.type';
 import { auth, firestore } from 'src/configs/firebase';
 import { doc, setDoc, } from "firebase/firestore";
-import { AuthContext } from './useAuthContext';
+import { AuthContext } from './use-auth-context';
 
 interface AuthProviderProps extends PropsWithChildren {}
 

@@ -1,7 +1,6 @@
 import styled from "styled-components/native";
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { BLACK, WHITE } from "../../styles/colors";
-import { Text, View} from "react-native";
+import { BLACK, BLUE, TERTIARY, WHITE } from "../../styles/colors";
 
 const Image = styled.Image`
   width: 120px;
@@ -17,33 +16,28 @@ const QuestionBtn = styled.TouchableOpacity`
   top: 4px;
 `;
 
-const QuestionBtnArea = styled.View`
-  flex-direction: row;
-  justify-self: flex-end;
-`;
-
 const Div = styled.View`
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 0 20px;
-  background-color: #fff;
-  height: 70px;
+  flex: 1;
+  padding: 20px;
+  background-color: ${BLUE};
   align-items: center;
 `;
 
-export const TopHeader = () => {
+const ButtonArea = styled.View`
+  flex-direction: row;
+  width: 100%;
+  justify-content: flex-end;
+  top: 20px;
+`;
+
+export const ProfileHeader = () => {
   return (
     <Div>
-      <View><Text></Text></View>
-      <Image
-        source={require('assets/images/logo_cesmac.png')}
-        resizeMode="contain"
-      />
-      <QuestionBtnArea>
+      <ButtonArea>
         <QuestionBtn activeOpacity={.7}>
           <Ionicons name="help-circle-outline" size={24} color={WHITE} />
         </QuestionBtn>
-      </QuestionBtnArea>
+      </ButtonArea>
     </Div>
   )
 }

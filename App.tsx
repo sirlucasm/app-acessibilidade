@@ -11,6 +11,8 @@ LogBox.ignoreLogs([
   'Setting a timer',
   'Found screens',
   'Non-serializable values were found in the navigation state',
+  'Image URL',
+  'Unexpected HTTP code'
 ]);
 
 export default function App() {
