@@ -34,6 +34,7 @@ module.exports = function(api) {
             "@screens": "./src/screens/",
             "@assets": "./assets/",
             "@styles": "./src/styles/",
+            "@types": "./src/@types/",
           },
         },
       ],

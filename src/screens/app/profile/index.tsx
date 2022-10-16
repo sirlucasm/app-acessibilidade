@@ -38,10 +38,10 @@ const Profile = () => {
           <DeficienciesInfo>
             <ScrollView>
               <DeficienciesContent w={["280", "300"]}>
-                <Text fontSize='md'>Deficiência Física</Text>
+                <Text fontSize='md'>Deficiência(s)</Text>
                 <HStack flexWrap='wrap'>
                 {
-                  user?.deficiency?.physics.map((def: any, index: number) => (
+                  user?.deficiency?.data.map((def: any, index: number) => (
                     <HStack key={index} alignItems='center' mt='2' mx='3'>
                       <Octicons
                         name="dot"
