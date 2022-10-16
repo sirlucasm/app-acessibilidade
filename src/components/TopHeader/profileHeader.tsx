@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { BLACK, BLUE, TERTIARY, WHITE } from "../../styles/colors";
+import { BLACK, PRIMARY, TERTIARY, WHITE } from "../../styles/colors";
 
 const Image = styled.Image`
   width: 120px;
@@ -19,7 +19,7 @@ const QuestionBtn = styled.TouchableOpacity`
 const Div = styled.View`
   flex: 1;
   padding: 20px;
-  background-color: ${BLUE};
+  background-color: ${PRIMARY};
   align-items: center;
 `;
 

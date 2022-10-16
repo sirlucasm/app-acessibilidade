@@ -47,7 +47,7 @@ export const CircleCardArea = styled.View`
 `;
 
 export const CircleCard = styled.View<CircleCardType>`
-  background-color: rgba(255, 222, 90, .7);
+  background-color: rgba(18, 131, 198, .7);
   width: 200px;
   height: 200px;
   border-radius: 150px;

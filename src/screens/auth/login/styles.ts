@@ -1,5 +1,4 @@
 import styled, { DefaultTheme } from "styled-components/native";
-import { WHITE } from "@styles/colors";
 import { TouchableOpacity } from "react-native";
 import { StyledComponent } from "styled-components";
 

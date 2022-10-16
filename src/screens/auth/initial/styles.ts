@@ -1,7 +1,8 @@
 import styled from "styled-components/native";
-import { PRIMARY, WHITE } from "@styles/colors";
+import { BLUE, PRIMARY, WHITE } from "@styles/colors";
 import { Container as StyledContainer } from "@styles/containers";
 import { fontPixel, pixelSizeVertical } from "src/utils/normalize";
+import { StatusBar } from "react-native";
 
 export const Container: any = styled(StyledContainer)`
   align-items: center;
@@ -12,7 +13,7 @@ export const HeaderArea = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
-  margin-bottom: ${pixelSizeVertical(120)}px;
+  flex-basis: ${pixelSizeVertical(120)}px;
 `;
 
 export const LogoArea = styled.View`
@@ -33,7 +34,7 @@ export const YellowBackgroundArea = styled.View`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: ${PRIMARY};
+  background-color: ${BLUE};
   border-top-left-radius: 280px;
   border-top-right-radius: 280px;
   width: 160%;
