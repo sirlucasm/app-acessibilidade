@@ -1,21 +1,24 @@
+import { ALERT, SUCCESS, WARNING } from "@styles/colors";
+
 type Accessible = 'yes' | 'parcial' | 'no'
 
-export const accessibleTranslateToString = (accessible: Accessible) => {
-  const types = {
-    yes: 'Acessível',
-    parcial: 'Parcialmente acessível',
-    no: 'Não acessível'
-  }
-  return types[accessible];
+const color = {
+  yes: SUCCESS,
+  parcial: WARNING,
+  no: ALERT
 }
 
-export const generateAccessibleObj = (accessible: Accessible) => {
-  const text = accessibleTranslateToString(accessible);
-  const color = {
-    yes: '#AED655',
-    parcial: '#DFC363',
-    no: '#EA492A'
-  }
-
-  return { text, color: color[accessible] }
+const types = {
+  yes: 'Acessível',
+  parcial: 'Parcialmente acessível',
+  no: 'Não acessível'
 }
+
+export const accessibleTranslateToString = (accessible: Accessible) => types[accessible];
+
+export const generateAccessibleObj = (accessible: Accessible) => ({
+  text: accessibleTranslateToString(accessible),
+  color: color[accessible]
+});
+
+export const accessibleColorString = (accessible: Accessible) => color[accessible];

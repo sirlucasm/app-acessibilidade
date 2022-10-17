@@ -1,5 +1,5 @@
 interface AccessibilityList {
-  accessible: string;
+  accessible: 'yes' | 'no' | 'parcial';
   title: string;
   description: string;
 }
@@ -10,8 +10,8 @@ export interface Place {
   description: string;
   descriptionObs: string;
   images: any[];
-  latitude: string;
-  longitude: string;
+  latitude: number;
+  longitude: number;
   locality: string;
   thumb_image: string;
   title: string;

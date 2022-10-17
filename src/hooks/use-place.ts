@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Place } from "@types/place.type";
+import { Place } from "src/@types/place.type";
 import { firestore } from "src/configs/firebase";
 import { collection, onSnapshot, query } from "firebase/firestore";
 

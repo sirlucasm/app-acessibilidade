@@ -27,6 +27,6 @@ export const GRAY_MEDIUM = '#a1a1a1';
 export const GRAY_DARK = '#323232';
 
 // ACTIONS
-export const SUCCESS = '#3adb76';
-export const WARNING = '#ffae00';
-export const ALERT = '#cc4b37';
+export const SUCCESS = '#AED655';
+export const WARNING = '#DFC363';
+export const ALERT = '#EA492A';

@@ -7,10 +7,16 @@ import LocationIcon from '@assets/images/icons/location-icon.svg'
 import { PlaceInfoButton } from './styles';
 import { generateAccessibleObj } from 'src/utils/place';
 import { Octicons } from '@expo/vector-icons';
+import { useCallback } from 'react';
+import { Place } from 'src/@types/place.type';
 
-const Navigate = () => {
+const Navigate = ({ navigation }: any) => {
   const { places } = usePlace()
   const { logout } = useAuthContext()
+
+  const handleShowPlace = useCallback((place: Place) => {
+    navigation.navigate('ShowPlace', { place })
+  }, []);
 
   return (
     <HeaderContainer>
@@ -21,11 +27,11 @@ const Navigate = () => {
         />
         <FlatList
           data={places}
-          w={["280", "300"]}
+          w={["300", "300"]}
           renderItem={({ item, index }) => {
-            const accessibleObj = generateAccessibleObj(item.accessible)
+            const accessibleObj = generateAccessibleObj(item.accessible);
             return (
-              <PlaceInfoButton activeOpacity={.84}>
+              <PlaceInfoButton activeOpacity={.84} onPress={() => handleShowPlace(item)}>
                 <HStack justifyContent='flex-start'>
                   <Image
                     source={{ uri: item.thumb_image }}
