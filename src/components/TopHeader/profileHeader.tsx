@@ -1,6 +1,7 @@
 import styled from "styled-components/native";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { BLACK, PRIMARY, TERTIARY, WHITE } from "../../styles/colors";
+import useAuthContext from "src/contexts/auth-context/use-auth-context";
 
 const Image = styled.Image`
   width: 120px;
@@ -13,7 +14,13 @@ const QuestionBtn = styled.TouchableOpacity`
   height: 26px;
   justify-content: center;
   align-items: center;
-  top: 4px;
+`;
+
+const LogoutBtn = styled.TouchableOpacity`
+  width: 26px;
+  height: 26px;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Div = styled.View`
@@ -26,14 +33,21 @@ const Div = styled.View`
 const ButtonArea = styled.View`
   flex-direction: row;
   width: 100%;
-  justify-content: flex-end;
+  justify-content: space-between;
   top: 20px;
 `;
 
 export const ProfileHeader = () => {
+  const { logout } = useAuthContext()
   return (
     <Div>
       <ButtonArea>
+        <LogoutBtn
+          activeOpacity={.7}
+          onPress={logout}
+        >
+          <Ionicons name="exit-outline" size={24} color={WHITE} />
+        </LogoutBtn>
         <QuestionBtn activeOpacity={.7}>
           <Ionicons name="help-circle-outline" size={24} color={WHITE} />
         </QuestionBtn>
