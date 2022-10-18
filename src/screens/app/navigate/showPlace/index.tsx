@@ -1,4 +1,4 @@
-import { Button, FlatList, HStack, Image, ScrollView, Text, View, VStack } from 'native-base';
+import { Button, HStack, Image, ScrollView, Text, View, VStack } from 'native-base';
 import useAuthContext from 'src/contexts/auth-context/use-auth-context';
 import { TopHeader } from '@components/TopHeader';
 import { HeaderContainer } from '@styles/containers';
@@ -7,9 +7,11 @@ import { AccessibleItemButton, DescriptionObsArea } from './styles';
 import { NavigationProp, RouteProp } from '@react-navigation/native';
 import { Place } from 'src/@types/place.type';
 import { accessibleColorString, generateAccessibleObj } from 'src/utils/place';
-import { Octicons } from '@expo/vector-icons';
+import { AntDesign, Octicons } from '@expo/vector-icons';
 import MapView, { Marker } from 'react-native-maps';
 import { ALERT, PRIMARY } from '@styles/colors';
+import { Alert } from 'react-native';
+import { fontPixel } from 'src/utils/normalize';
 
 interface ShowPlaceProps {
   navigation: NavigationProp<any, 'ShowPlace'>;
@@ -20,24 +22,40 @@ interface ShowPlaceProps {
   };
 }
 
-const ShowPlace = ({ route, }: ShowPlaceProps) => {
+const ShowPlace = ({ route, navigation }: ShowPlaceProps) => {
   const { place } = route.params;
 
   const accessibleObj = generateAccessibleObj(place.accessible);
 
+  const handleAccessibleAlert = (item: any) => {
+    Alert.alert(item.title, item.description, [
+      { text: "Entendi" }
+    ]);
+  }
+
   return (
     <HeaderContainer>
       <VStack alignItems='center' marginTop={5}>
-        <Text
-          bold
-          fontSize='lg'
+        <HStack
+          alignItems='center'
+          w='full'
+          justifyContent='space-around'
           marginBottom={2}
         >
-          {place.title}
-        </Text>
+          <Button variant='ghost' onPress={() => navigation.goBack()}>
+            <AntDesign name="arrowleft" size={fontPixel(24)} />
+          </Button>
+          <Text
+            bold
+            fontSize='lg'
+          >
+            {place.title}
+          </Text>
+          <View></View>
+        </HStack>
         <View style={{ paddingBottom: 10 }}>
           <Image
-            source={{ uri: place.thumb_image }}
+            source={{ uri: place.thumbImage }}
             alt="Place thumb image"
             size={200}
             w={["300", "200"]}
@@ -45,7 +63,7 @@ const ShowPlace = ({ route, }: ShowPlaceProps) => {
           />
         </View>
         <ScrollView h={430}>
-          <HStack alignItems='center' marginTop={2}>
+          <HStack alignItems='center' marginTop={2} marginBottom={4}>
             <Octicons
               name="dot-fill"
               size={21}
@@ -68,7 +86,11 @@ const ShowPlace = ({ route, }: ShowPlaceProps) => {
               place.accessibilityList.map((item, index) => {
                 const itemAccessibleColor = accessibleColorString(item.accessible);
                 return (
-                  <AccessibleItemButton key={index} activeOpacity={.7}>
+                  <AccessibleItemButton
+                    key={index}
+                    activeOpacity={.7}
+                    onPress={() => handleAccessibleAlert(item)}
+                  >
                     <Octicons
                       name="dot-fill"
                       size={18}

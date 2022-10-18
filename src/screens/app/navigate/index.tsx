@@ -34,7 +34,7 @@ const Navigate = ({ navigation }: any) => {
               <PlaceInfoButton activeOpacity={.84} onPress={() => handleShowPlace(item)}>
                 <HStack justifyContent='flex-start'>
                   <Image
-                    source={{ uri: item.thumb_image }}
+                    source={{ uri: item.thumbImage }}
                     alt="Place thumb image"
                     size={'sm'}
                     style={{ borderRadius: 4 }}

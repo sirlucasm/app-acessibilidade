@@ -13,6 +13,6 @@ export interface Place {
   latitude: number;
   longitude: number;
   locality: string;
-  thumb_image: string;
+  thumbImage: string;
   title: string;
 }

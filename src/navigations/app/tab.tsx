@@ -1,3 +1,4 @@
+import BottomTabContent from '@components/BottomTabContent';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Navigate from '../../screens/app/navigate';
 import Profile from '../../screens/app/profile';
@@ -10,6 +11,7 @@ export const AppTab = () => {
       screenOptions={{
         headerShown: false,
       }}
+      tabBar={props => <BottomTabContent {...props} />}
     >
       <Tab.Screen name="ProfileTab" component={Profile} />
       <Tab.Screen name="NavigateTab" component={Navigate} />
