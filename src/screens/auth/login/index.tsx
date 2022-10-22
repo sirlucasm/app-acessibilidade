@@ -77,7 +77,7 @@ const Login = ({ navigation }: LoginProps) => {
                 onBlur={handleBlur('password')}
                 type='password'
               />
-              <ForgetPasswordArea activeOpacity={0.7}>
+              <ForgetPasswordArea activeOpacity={0.7} onPress={() => navigation.navigate('ForgetPassword')}>
                 <ForgetPasswordText>Esqueci minha senha</ForgetPasswordText>
               </ForgetPasswordArea>
               <Button

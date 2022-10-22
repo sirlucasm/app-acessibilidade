@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, User } from 'firebase/auth';
+import { createUserWithEmailAndPassword, sendPasswordResetEmail, signInWithEmailAndPassword, updateProfile, User } from 'firebase/auth';
 import { Alert } from 'react-native';
 import { PropsWithChildren, useEffect, useState, useCallback } from 'react';
 import { CreateUser, LoginUser } from 'src/@types/user.type';
@@ -55,6 +55,14 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     }
   }
 
+  const forgetPasswordEmail = async ({ email }: { email: string }) => {
+    try {
+      await sendPasswordResetEmail(auth, email);
+    } catch(error: any) {
+      throw new Error(`[AuthContext::forgetPasswordEmail] Não foi possível enviar email de reset de senha - Erro:\n${JSON.stringify(error)}`)
+    }
+  }
+
   const fetchCurrentUser = useCallback(async () => {
     const user = auth.currentUser;
     const storedInfo = await AsyncStorage.getItem('@urbe.user');
@@ -76,7 +84,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         isLogged: !!currentUser,
         signUp,
         login,
-        logout
+        logout,
+        forgetPasswordEmail
       }}
     >
       {children}

@@ -3,6 +3,7 @@ import { useFonts } from 'expo-font';
 import { NativeBaseProvider } from 'native-base';
 import { LogBox } from 'react-native';
 import { AuthProvider } from 'src/contexts/auth-context';
+import ToastManager from 'toastify-react-native';
 
 import Navigations from './src/navigations';
 
@@ -24,6 +25,7 @@ export default function App() {
 
   return (
     <NativeBaseProvider>
+      <ToastManager />
       <AuthProvider>
         <Navigations />
       </AuthProvider>

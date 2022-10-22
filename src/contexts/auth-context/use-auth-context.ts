@@ -7,6 +7,7 @@ type AuthContextParams = {
   isLogged: boolean;
   signUp(params: CreateUser): void
   login(params: LoginUser): void
+  forgetPasswordEmail(params: { email: string }): void
   logout(): void
 };
 

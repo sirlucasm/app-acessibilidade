@@ -1,44 +1,38 @@
-import { Input } from '@components/Inputs';
-import { AntDesign, Feather } from '@expo/vector-icons'
-import { NavigationProp } from '@react-navigation/native';
+import { Input } from "@components/Inputs";
+import { AntDesign } from "@expo/vector-icons";
+import { NavigationProp } from "@react-navigation/native";
+import { Formik } from "formik";
+import { Button, Text, VStack } from "native-base";
 import { Image } from 'react-native'
-import { Button } from 'native-base'
-import { fontPixel, heightPixel, widthPixel } from 'src/utils/normalize'
-import {
-  CircleCard,
-  CircleCardArea,
-  Header,
-  Main,
-  BackButton,
-  LogoArea,
-  FormArea,
-  Logo,
-  CesmacLogoArea
-} from './style'
-import { Formik } from 'formik';
+import useAuthContext from "src/contexts/auth-context/use-auth-context";
+import { fontPixel, heightPixel, widthPixel } from "src/utils/normalize";
+import { BackButton, CesmacLogoArea, CircleCard, CircleCardArea, FormArea, Header, Logo, LogoArea, Main } from "../signUp/style";
 import { Toast } from 'toastify-react-native';
-import useAuthContext from 'src/contexts/auth-context/use-auth-context';
-import { CreateUser } from 'src/@types/user.type';
 
-interface SignUpProps {
-  navigation: NavigationProp<any, 'SignUp'>;
+interface ForgetPasswordProps {
+  navigation: NavigationProp<any, 'ForgetPassword'>;
 }
 
-const SignUp = ({ navigation }: SignUpProps) => {
-  const { signUp } = useAuthContext();
+const ForgetPassword = ({ navigation }: ForgetPasswordProps) => {
+  const { forgetPasswordEmail } = useAuthContext();
 
-  const handleSignUp = (values: CreateUser) => {
+  const handleForgetPassword = (values: { email: string; }) => {
     if (!values.email) {
-      Toast.error('Preencha todos os campos');
+      Toast.error('Preencha o campo obrigatório');
       return
     }
 
-    signUp(values);
+    forgetPasswordEmail(values);
+    Toast.success('Email enviado.');
+    setTimeout(() => {
+      navigation.goBack();
+    }, 1500)
   }
 
   const handleBack = () => {
     navigation.goBack();
   }
+
   return (
     <Main>
       <Header>
@@ -58,42 +52,36 @@ const SignUp = ({ navigation }: SignUpProps) => {
         <LogoArea>
           <Logo>Urbe Acessível</Logo>
         </LogoArea>
-
+        <VStack marginTop={6}>
+          <Text
+            fontSize={fontPixel(19)}
+            color='#323232'
+          >
+            Esqueceu a senha?
+          </Text>
+          <Text
+            fontSize={fontPixel(13.5)}
+            color='#424242'
+            marginTop={2}
+          >
+            Informe seu e-mail cadastrado no APP para enviarmos as instruções de redefinição de senha.
+          </Text>
+        </VStack>
         <Formik
           initialValues={{
-            email: '',
-            name: '',
-            password: '',
+            email: ""
           }}
-          onSubmit={values => handleSignUp(values)}
+          onSubmit={(values) => handleForgetPassword(values)}
         >
           {({ handleChange, handleBlur, handleSubmit }) => (
             <>
               <Input
-                placeholder='Email *'
+                placeholder='Email'
                 iconName='mail'
                 onChangeText={handleChange('email')}
                 onBlur={handleBlur('email')}
                 marginTop={10}
               />
-              <Input
-                placeholder='Nome *'
-                marginTop={4}
-                iconName='user'
-                onChangeText={handleChange('name')}
-                onBlur={handleBlur('name')}
-              />
-
-              <Input
-                placeholder='Senha *'
-                marginTop={4}
-                marginBottom={8}
-                iconName='lock'
-                onChangeText={handleChange('password')}
-                onBlur={handleBlur('password')}
-                type='password'
-              />
-
               <Button
                 style={{
                   backgroundColor: '#1283C6',
@@ -102,9 +90,10 @@ const SignUp = ({ navigation }: SignUpProps) => {
                   borderRadius: 12,
                   alignSelf: 'center'
                 }}
+                marginTop={4}
                 onPress={(e: any) => handleSubmit(e)}
               >
-                Cadastrar
+                Enviar
               </Button>
             </>
           )}
@@ -117,7 +106,7 @@ const SignUp = ({ navigation }: SignUpProps) => {
         />
       </CesmacLogoArea>
     </Main>
-  )
+  );
 }
 
-export default SignUp
+export default ForgetPassword;

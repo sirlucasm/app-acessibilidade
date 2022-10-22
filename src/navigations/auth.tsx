@@ -1,4 +1,5 @@
 import { CardStyleInterpolators, createStackNavigator } from '@react-navigation/stack';
+import ForgetPassword from '@screens/auth/forgetPassword';
 import { Initial } from '@screens/auth/initial';
 import Login from '@screens/auth/login';
 import SignUp from '@screens/auth/signUp';
@@ -17,6 +18,7 @@ export const AuthStack = () => {
       <Stack.Screen name="Initial" component={Initial} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="SignUp" component={SignUp} />
+      <Stack.Screen name="ForgetPassword" component={ForgetPassword} />
     </Stack.Navigator>
   )
 }
