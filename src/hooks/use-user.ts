@@ -26,7 +26,8 @@ export const useUser = () => {
       const deficienyData: any[] = [];
 
       if (!data.empty) data.forEach(user => deficienyData.push(user.data()));
-      setUser((prev: any) => ({ ...prev, deficiency: deficienyData[0] }))
+      setUser((prev: any) => ({ ...prev, deficiency: deficienyData[0] }));
+      setDeficiency(deficienyData[0]);
     });
 
     return () => {
@@ -35,5 +36,5 @@ export const useUser = () => {
     }
   }, [])
 
-  return { user }
+  return { user, deficiency }
 }

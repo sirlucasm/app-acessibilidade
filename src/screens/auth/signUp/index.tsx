@@ -27,9 +27,17 @@ interface SignUpProps {
 const SignUp = ({ navigation }: SignUpProps) => {
   const { signUp } = useAuthContext();
 
-  const handleSignUp = (values: CreateUser) => {
+  const handleSignUp = (values: any) => {
     if (!values.email) {
-      Toast.error('Preencha todos os campos');
+      Toast.error('Preencha o campo de email');
+      return
+    }
+    if (!values.name) {
+      Toast.error('Preencha o campo de nome');
+      return
+    }
+    if (!values.password) {
+      Toast.error('Preencha o campo de senha');
       return
     }
 

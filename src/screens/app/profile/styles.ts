@@ -15,6 +15,5 @@ export const DeficienciesContent = styled(VStack)`
   border-style: dashed;
   border-radius: 8px;
 
-  align-items: center;
   padding: 20px;
 `
