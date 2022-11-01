@@ -18,7 +18,6 @@ import {
 import { Formik } from 'formik';
 import { Toast } from 'toastify-react-native';
 import useAuthContext from 'src/contexts/auth-context/use-auth-context';
-import { CreateUser } from 'src/@types/user.type';
 
 interface SignUpProps {
   navigation: NavigationProp<any, 'SignUp'>;

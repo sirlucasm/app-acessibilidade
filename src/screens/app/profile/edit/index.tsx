@@ -11,7 +11,6 @@ import { storage } from 'src/configs/firebase';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { updateProfile } from 'firebase/auth';
 import * as ImagePicker from 'expo-image-picker';
-import { useState } from "react";
 import { TouchableOpacity } from "react-native";
 import { Octicons } from "@expo/vector-icons";
 

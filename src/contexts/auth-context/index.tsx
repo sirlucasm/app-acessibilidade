@@ -1,11 +1,11 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createUserWithEmailAndPassword, sendPasswordResetEmail, signInWithEmailAndPassword, updateProfile, User } from 'firebase/auth';
-import { Alert } from 'react-native';
 import { PropsWithChildren, useEffect, useState, useCallback } from 'react';
 import { CreateUser, LoginUser } from 'src/@types/user.type';
 import { auth, firestore } from 'src/configs/firebase';
 import { doc, setDoc, } from "firebase/firestore";
 import { AuthContext } from './use-auth-context';
+import { Toast } from 'toastify-react-native';
 
 interface AuthProviderProps extends PropsWithChildren {}
 
@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       }
     } catch(error: any) {
       console.error(`[AuthContext::signUp] Não foi possível criar a conta - Erro:\n${JSON.stringify(error)}`)
-      Alert.alert('Erro', error.message)
+      Toast.error(error.message);
     }
   }
 
@@ -47,7 +47,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       }
     } catch(error: any) {
       console.error(`[AuthContext::login] Não foi possível realizar login - Erro:\n${JSON.stringify(error)}`)
-      Alert.alert('Erro', error.message)
+      Toast.error(error.message);
     }
   }
 
