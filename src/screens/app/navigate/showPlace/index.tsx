@@ -1,4 +1,4 @@
-import { Button, HStack, Image, ScrollView, Text, View, VStack } from 'native-base';
+import { Button, Center, HStack, Image, ScrollView, Text, View, VStack } from 'native-base';
 import useAuthContext from 'src/contexts/auth-context/use-auth-context';
 import { TopHeader } from '@components/TopHeader';
 import { HeaderContainer } from '@styles/containers';
@@ -9,9 +9,12 @@ import { Place } from 'src/@types/place.type';
 import { accessibleColorString, generateAccessibleObj } from 'src/utils/place';
 import { AntDesign, Octicons } from '@expo/vector-icons';
 import MapView, { Marker } from 'react-native-maps';
-import { ALERT, PRIMARY } from '@styles/colors';
-import { Alert } from 'react-native';
+import { ALERT, GRAY_DARK, GRAY_LIGHT, PRIMARY } from '@styles/colors';
+import { Alert, TouchableOpacity } from 'react-native';
 import { fontPixel } from 'src/utils/normalize';
+import { useState } from 'react';
+import { ShowPlaceInfo } from './info';
+import { ShowPlaceMap } from './map';
 
 interface ShowPlaceProps {
   navigation: NavigationProp<any, 'ShowPlace'>;
@@ -24,14 +27,11 @@ interface ShowPlaceProps {
 
 const ShowPlace = ({ route, navigation }: ShowPlaceProps) => {
   const { place } = route.params;
+  const [menuItem, setMenuItem] = useState<'info' | 'map'>('info');
 
   const accessibleObj = generateAccessibleObj(place.accessible);
 
-  const handleAccessibleAlert = (item: any) => {
-    Alert.alert(item.title, item.description, [
-      { text: "Entendi" }
-    ]);
-  }
+  const handleMenuChange = (menu: 'info' | 'map') => setMenuItem(menu);
 
   return (
     <HeaderContainer>
@@ -53,117 +53,49 @@ const ShowPlace = ({ route, navigation }: ShowPlaceProps) => {
           </Text>
           <View></View>
         </HStack>
-        <View style={{ paddingBottom: 10 }}>
-          <Image
-            source={{ uri: place.thumbImage }}
-            alt="Place thumb image"
-            size={200}
-            w={["300", "200"]}
-            style={{ borderRadius: 4 }}
-          />
-        </View>
-        <ScrollView h={430}>
-          <HStack alignItems='center' marginTop={2} marginBottom={4}>
-            <Octicons
-              name="dot-fill"
-              size={21}
-              color={accessibleObj.color}
-              style={{ marginRight: 4 }}
-            />
-            <Text
-              color={accessibleObj.color}
-              fontSize={18}
-            >
-              {accessibleObj.text}
-            </Text>
-          </HStack>
-          <HStack
-            flexWrap='wrap'
-            w={["300", "200"]}
-            justifyContent='space-between'
+
+        <HStack
+          alignItems='center'
+          justifyContent='space-evenly'
+          marginBottom={2}
+          backgroundColor={GRAY_LIGHT}
+          padding={2}
+          borderRadius={8}
+          w={["200", "200"]}
+        >
+          <TouchableOpacity
+            activeOpacity={.7}
+            onPress={() => handleMenuChange('info')}
           >
-            {
-              place.accessibilityList.map((item, index) => {
-                const itemAccessibleColor = accessibleColorString(item.accessible);
-                return (
-                  <AccessibleItemButton
-                    key={index}
-                    activeOpacity={.7}
-                    onPress={() => handleAccessibleAlert(item)}
-                  >
-                    <Octicons
-                      name="dot-fill"
-                      size={18}
-                      color={itemAccessibleColor}
-                      style={{ marginRight: 4 }}
-                    />
-                    <Text
-                      color={itemAccessibleColor}
-                      fontSize={15}
-                    >
-                      {item.title}
-                    </Text>
-                  </AccessibleItemButton>
-                )
-              })
-            }
-          </HStack>
-          <VStack w={["300", "200"]} marginTop={4}>
-            <Text
-              fontSize={17}
-              marginBottom={2}
-              color='#323232'
-            >
-              Localização
-            </Text>
-            <View backgroundColor='gray.200' padding={1} borderRadius={4}>
-              <MapView
-                initialRegion={{
-                  latitude: place.latitude,
-                  longitude: place.longitude,
-                  latitudeDelta: 0.01,
-                  longitudeDelta: 0.01,
-                }}
-                style={{ width: '100%', height: 200 }}
-              >
-                <Marker
-                  coordinate={{
-                    latitude: place.latitude,
-                    longitude: place.longitude
-                  }}
-                />
-              </MapView>
-            </View>
-          </VStack>
-          <VStack w={["300", "200"]} marginTop={4}>
-            <Text
-              fontSize={17}
-              marginBottom={2}
-              color='#323232'
-            >
-              Descrição
-            </Text>
-            <Text
-              fontSize={14}
-              marginBottom={2}
-              color='#323232'
-            >
-              {place.description}
-            </Text>
-          </VStack>
-          <VStack w={["300", "200"]} marginTop={1}>
-            <DescriptionObsArea>
-              <Text
-                fontSize={14}
-                marginBottom={2}
-                color={ALERT}
-              >
-                {place.descriptionObs}
-              </Text>
-            </DescriptionObsArea>
-          </VStack>
-        </ScrollView>
+            <HStack alignItems='center'>
+              <Octicons name='dot-fill' color={menuItem === 'info' ? PRIMARY : 'transparent'} />
+              <Text marginLeft={2} color={menuItem === 'info' ? PRIMARY : GRAY_DARK}>Informações</Text>
+            </HStack>
+          </TouchableOpacity>
+          <TouchableOpacity
+            activeOpacity={.7}
+            onPress={() => handleMenuChange('map')}
+          >
+            <HStack alignItems='center'>
+              <Octicons name='dot-fill' color={menuItem === 'map' ? PRIMARY : 'transparent'} />
+              <Text marginLeft={2} color={menuItem === 'map' ? PRIMARY : GRAY_DARK}>Mapa</Text>
+            </HStack>
+          </TouchableOpacity>
+        </HStack>
       </VStack>
+
+      {
+        menuItem === 'info' ?
+          <Center>
+            <ShowPlaceInfo
+              place={place}
+            />
+          </Center>
+          :
+          <ShowPlaceMap
+            place={place}
+          />
+      }
     </HeaderContainer>
   );
 }
