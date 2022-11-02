@@ -30,7 +30,7 @@ const Navigate = ({ navigation }: any) => {
           placeholder='Buscar locais'
           w={["300", "300"]}
           iconName='search'
-          mb={5}
+          mb={2}
           onChangeText={(title) => searchOnChange(title)}
         />
         <FlatList
@@ -39,7 +39,11 @@ const Navigate = ({ navigation }: any) => {
           renderItem={({ item, index }) => {
             const accessibleObj = generateAccessibleObj(item.accessible);
             return (
-              <PlaceInfoButton activeOpacity={.84} onPress={() => handleShowPlace(item)}>
+              <PlaceInfoButton
+                key={index}
+                activeOpacity={.84}
+                onPress={() => handleShowPlace(item)}
+              >
                 <HStack justifyContent='flex-start'>
                   <Image
                     source={{ uri: item.thumbImage }}

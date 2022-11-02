@@ -12,4 +12,5 @@ export const PlaceInfoButton = styled.TouchableOpacity`
   border-radius: 8px;
 
   padding: 8px 12px;
+  margin-top: 12px;
 `;

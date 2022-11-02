@@ -93,17 +93,19 @@ export const ShowPlaceInfo = ({ place }: ShowPlaceInfoParams) => {
             {place.description}
           </Text>
         </VStack>
-        <VStack w={["300", "200"]} marginTop={1}>
-          <DescriptionObsArea>
-            <Text
-              fontSize={14}
-              marginBottom={2}
-              color={ALERT}
-            >
-              {place.descriptionObs}
-            </Text>
-          </DescriptionObsArea>
-        </VStack>
+        {!!place.descriptionObs &&
+          <VStack w={["300", "200"]} marginTop={1}>
+            <DescriptionObsArea>
+              <Text
+                fontSize={14}
+                marginBottom={2}
+                color={ALERT}
+              >
+                {place.descriptionObs}
+              </Text>
+            </DescriptionObsArea>
+          </VStack>
+        }
       </ScrollView>
     </>
   );
