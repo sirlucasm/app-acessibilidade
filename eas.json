@@ -1,0 +1,13 @@
+{
+  "build": {
+    "preview": {
+      "android": {
+        "buildType": "apk"
+      },
+      "developmentClient": true
+    },
+    "production": {
+      "node": "16.17.0"
+    }
+  }
+}

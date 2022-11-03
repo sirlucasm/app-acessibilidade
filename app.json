@@ -5,9 +5,11 @@
     "description": "Plataforma de acessibilidade na mobilidade urbana de idosos, crianças, pessoas obesas e pessoas com algum tipo de deficiência visual ou motora.",
     "privacy": "public",
     "version": "0.0.1",
-    "platforms": ["android"],
+    "platforms": [
+      "android"
+    ],
     "orientation": "portrait",
-    "icon": "./assets/images/logo_acessibilidade_ruas[220].png",
+    "icon": "./assets/images/logo_acessibilidade_ruas.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/images/logo_acessibilidade_ruas_splash.png",
@@ -24,7 +26,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/logo_acessibilidade_ruas_splash.png",
         "backgroundColor": "#1283C6"
-      }
+      },
+      "package": "com.cesmac.urbeacessivel"
     },
     "web": {
       "favicon": "./assets/favicon.png"
