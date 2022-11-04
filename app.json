@@ -4,7 +4,7 @@
     "slug": "urbe-acessivel",
     "description": "Plataforma de acessibilidade na mobilidade urbana de idosos, crianças, pessoas obesas e pessoas com algum tipo de deficiência visual ou motora.",
     "privacy": "public",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "platforms": [
       "android"
     ],
@@ -36,6 +36,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "fd8cc21e-f74a-4849-8745-bdfba8d74440"
+      }
     }
   }
 }
