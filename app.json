@@ -27,7 +27,12 @@
         "foregroundImage": "./assets/images/logo_acessibilidade_ruas_splash.png",
         "backgroundColor": "#1283C6"
       },
-      "package": "com.cesmac.urbeacessivel"
+      "package": "com.cesmac.urbeacessivel",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDt7WYTBOA7UZcnscEHIVWCEW9dAovil98"
+        }
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
