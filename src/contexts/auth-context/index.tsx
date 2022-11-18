@@ -18,12 +18,20 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
       if (user) {
         await AsyncStorage.setItem('@urbe.user', JSON.stringify({ email, password }));
+        const photoURL = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png';
         await updateProfile(user, {
           displayName: name,
+          photoURL
         });
         const docRef = doc(firestore, 'users', user.uid);
         const deficiencyDocRef = doc(firestore, 'deficiencies', user.uid);
-        await setDoc(docRef, { email, name, uid: user.uid, admin: false });
+        await setDoc(docRef, {
+          email,
+          name,
+          uid: user.uid,
+          admin: false,
+          photoURL
+        });
         await setDoc(deficiencyDocRef, {
           userId: user.uid,
           data: [],

@@ -7,12 +7,13 @@ import { getUserNameLetters } from 'src/utils/user';
 import { TERTIARY } from '@styles/colors';
 import AppLoading from '@components/AppLoading';
 import { EditProfileForm } from "./form";
-import { storage } from 'src/configs/firebase';
+import { firestore, storage } from 'src/configs/firebase';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { updateProfile } from 'firebase/auth';
 import * as ImagePicker from 'expo-image-picker';
 import { TouchableOpacity } from "react-native";
 import { Octicons } from "@expo/vector-icons";
+import { doc, updateDoc } from "firebase/firestore";
 
 
 const EditProfile = () => {
@@ -40,6 +41,8 @@ const EditProfile = () => {
     await updateProfile(currentUser, {
       photoURL: downloadURL,
     });
+    const userRef = doc(firestore, 'users', user.uid);
+    await updateDoc(userRef, { photoURL: downloadURL, });
   }
 
   if (!user || !deficiency) return <AppLoading />;
