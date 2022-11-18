@@ -1,24 +1,29 @@
-import { Octicons } from '@expo/vector-icons';
+import { Ionicons, Octicons } from '@expo/vector-icons';
 import { Place } from 'src/@types/place.type';
-import { Button, HStack, Image, ScrollView, Text, View, VStack } from 'native-base';
+import { HStack, Image, ScrollView, Text, View, VStack, Modal } from 'native-base';
 import { accessibleColorString, generateAccessibleObj } from 'src/utils/place';
 import { AccessibleItemButton, DescriptionObsArea } from './styles';
-import { ALERT } from '@styles/colors';
-import { Alert } from 'react-native';
+import { ALERT, WHITE } from '@styles/colors';
 import { heightPixel } from 'src/utils/normalize';
+import { useState } from 'react';
 
 interface ShowPlaceInfoParams {
   place: Place;
 }
 
-const handleAccessibleAlert = (item: any) => {
-  Alert.alert(item.title, item.description, [
-    { text: "Entendi" }
-  ]);
-}
-
 export const ShowPlaceInfo = ({ place }: ShowPlaceInfoParams) => {
+  const [isOpenAccessibleItemModal, setIsOpenAccessibleItemModal] = useState(false);
+  const [accessibleItem, setAccessibleItem] = useState<any>();
   const accessibleObj = generateAccessibleObj(place.accessible);
+
+  const handleAccessibleModalOpen = (item: any) => {
+    setAccessibleItem(item);
+    setIsOpenAccessibleItemModal(true);
+  }
+  const handleAccessibleModalClose = () => {
+    setIsOpenAccessibleItemModal(false);
+    setAccessibleItem(undefined);
+  }
 
   return (
     <>
@@ -58,7 +63,7 @@ export const ShowPlaceInfo = ({ place }: ShowPlaceInfoParams) => {
                 <AccessibleItemButton
                   key={index}
                   activeOpacity={.7}
-                  onPress={() => handleAccessibleAlert(item)}
+                  onPress={() => handleAccessibleModalOpen(item)}
                 >
                   <Octicons
                     name="dot-fill"
@@ -106,6 +111,39 @@ export const ShowPlaceInfo = ({ place }: ShowPlaceInfoParams) => {
             </DescriptionObsArea>
           </VStack>
         }
+        <Modal
+          isOpen={isOpenAccessibleItemModal}
+          onClose={handleAccessibleModalClose}
+        >
+          <Modal.Content>
+            <Modal.CloseButton />
+            <Modal.Header>{accessibleItem?.title}</Modal.Header>
+            <Modal.Body alignItems='center'>
+              <HStack
+                alignItems='center'
+                backgroundColor={accessibleColorString(accessibleItem?.accessible)}
+                padding='1.5'
+                borderRadius={4}
+                mb='3'
+              >
+                <Ionicons name='alert-circle-outline' size={16} color={WHITE} />
+                <Text
+                  fontSize={14}
+                  textAlign='center'
+                  color={WHITE}
+                >{accessibleItem?.description}</Text>
+              </HStack>
+              <Image
+                source={{ uri: accessibleItem?.image }}
+                alt="Place thumb image"
+                loadingIndicatorSource={{ uri: 'https://www.lumen-care.com/wp-content/uploads/loading.gif' }}
+                size={260}
+                w={["220", "150"]}
+                style={{ borderRadius: 4 }}
+              />
+            </Modal.Body>
+          </Modal.Content>
+        </Modal>
       </ScrollView>
     </>
   );

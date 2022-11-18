@@ -6,6 +6,7 @@ export const AccessibleItemButton = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
   margin-top: 4px;
+  padding: 0 4px;
 `;
 
 export const DescriptionObsArea = styled.View`
