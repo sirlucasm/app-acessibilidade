@@ -1,4 +1,4 @@
-import { FlatList, HStack, Image, Text, View, VStack } from 'native-base';
+import { Box, FlatList, HStack, Image, Text, View, VStack } from 'native-base';
 import useAuthContext from 'src/contexts/auth-context/use-auth-context';
 import { TopHeader } from '@components/TopHeader';
 import { HeaderContainer } from '@styles/containers';
@@ -6,11 +6,12 @@ import { usePlace } from 'src/hooks/use-place';
 import LocationIcon from '@assets/images/icons/location-icon.svg'
 import { PlaceInfoButton } from './styles';
 import { generateAccessibleObj } from 'src/utils/place';
-import { Octicons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import { useCallback } from 'react';
 import { Place } from 'src/@types/place.type';
 import { Input } from '@components/Inputs';
 import { heightPixel } from 'src/utils/normalize';
+import { WHITE } from '@styles/colors';
 
 const Navigate = ({ navigation }: any) => {
   const { places, searchOnChange } = usePlace()
@@ -20,12 +21,19 @@ const Navigate = ({ navigation }: any) => {
     navigation.navigate('ShowPlace', { place });
   }, []);
 
+  const choseIconName: any = {
+    no: 'close-outline',
+    parcial: 'remove-outline',
+    yes: 'checkmark',
+  }
+
   return (
     <HeaderContainer>
       <TopHeader />
       <VStack alignItems='center'>
         <LocationIcon
-          style={{ marginTop: 15, marginBottom: 20 }}
+          style={{ marginTop: 2, marginBottom: 8 }}
+          width={60}
         />
         <Input
           placeholder='Buscar locais'
@@ -37,7 +45,7 @@ const Navigate = ({ navigation }: any) => {
         <FlatList
           data={places}
           w={["320", "300"]}
-          height={heightPixel(390)}
+          height={heightPixel(420)}
           renderItem={({ item, index }) => {
             const accessibleObj = generateAccessibleObj(item.accessible);
             return (
@@ -82,16 +90,22 @@ const Navigate = ({ navigation }: any) => {
 
                     </View>
                   </VStack>
-                  <Octicons
-                    name="dot-fill"
-                    size={21}
-                    color={accessibleObj.color}
-                    style={{
-                      marginRight: 4,
-                      position: 'absolute',
-                      right: 0
-                    }}
-                  />
+                  <Box
+                    position='absolute'
+                    right={0}
+                    size={22}
+                    backgroundColor={accessibleObj.color}
+                    display='flex'
+                    alignItems='center'
+                    justifyContent='center'
+                    borderRadius={50}
+                  >
+                    <Ionicons
+                      name={choseIconName[item.accessible]}
+                      size={16}
+                      color={WHITE}
+                    />
+                  </Box>
                 </HStack>
               </PlaceInfoButton>
             )
