@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { BLACK, WHITE } from "../../styles/colors";
+import { PRIMARY, WHITE } from "../../styles/colors";
 import { Text, View} from "react-native";
 
 const Image = styled.Image`
@@ -8,7 +8,7 @@ const Image = styled.Image`
 `;
 
 const QuestionBtn = styled.TouchableOpacity`
-  background-color: ${BLACK};
+  background-color: ${PRIMARY};
   border-radius: 50px;
   width: 26px;
   height: 26px;
