@@ -1,6 +1,6 @@
 import { Ionicons, Octicons } from '@expo/vector-icons';
 import { Place } from 'src/@types/place.type';
-import { HStack, Image, ScrollView, Text, View, VStack, Modal } from 'native-base';
+import { HStack, Image, ScrollView, Text, View, VStack, Modal, Box } from 'native-base';
 import { accessibleColorString, generateAccessibleObj } from 'src/utils/place';
 import { AccessibleItemButton, DescriptionObsArea } from './styles';
 import { ALERT, WHITE } from '@styles/colors';
@@ -37,20 +37,30 @@ export const ShowPlaceInfo = ({ place }: ShowPlaceInfoParams) => {
             style={{ borderRadius: 4 }}
           />
         </View>
-        <HStack alignItems='center' marginTop={2} marginBottom={4}>
+        <Box
+          backgroundColor={accessibleObj.color}
+          display='flex'
+          flexDirection='row'
+          alignItems='center'
+          justifyContent='center'
+          borderRadius={12}
+          marginTop={2}
+          marginBottom={4}
+          paddingY={2}
+        >
           <Octicons
             name="dot-fill"
             size={21}
-            color={accessibleObj.color}
+            color={WHITE}
             style={{ marginRight: 4 }}
           />
           <Text
-            color={accessibleObj.color}
-            fontSize={18}
+            color={WHITE}
+            fontSize={16.3}
           >
             {accessibleObj.text}
           </Text>
-        </HStack>
+        </Box>
         <HStack
           flexWrap='wrap'
           w={["300", "200"]}
