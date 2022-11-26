@@ -59,7 +59,7 @@ const EditProfile = () => {
             borderColor={TERTIARY}
             borderWidth={12}
           >
-            {getUserNameLetters(currentUser?.displayName || '')}
+            {getUserNameLetters(user?.name || '')}
           </Avatar>
           <View
             position='absolute'

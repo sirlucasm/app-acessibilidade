@@ -31,10 +31,10 @@ const Profile = ({ navigation }: ProfileProps) => {
           borderColor={TERTIARY}
           borderWidth={12}
         >
-          {getUserNameLetters(currentUser?.displayName || '')}
+          {getUserNameLetters(user?.name || '')}
         </Avatar>
-        <Text fontSize='xl'>{currentUser?.displayName}</Text>
-        <Text fontSize='sm' underline >{currentUser?.email}</Text>
+        <Text fontSize='xl'>{user?.name}</Text>
+        <Text fontSize='sm' underline >{user?.email}</Text>
       </VStack>
       <DeficienciesInfo>
         <ScrollView>
