@@ -10,6 +10,7 @@ import { Octicons } from '@expo/vector-icons';
 import { useCallback } from 'react';
 import { Place } from 'src/@types/place.type';
 import { Input } from '@components/Inputs';
+import { heightPixel } from 'src/utils/normalize';
 
 const Navigate = ({ navigation }: any) => {
   const { places, searchOnChange } = usePlace()
@@ -28,14 +29,15 @@ const Navigate = ({ navigation }: any) => {
         />
         <Input
           placeholder='Buscar locais'
-          w={["300", "300"]}
+          w={["320", "300"]}
           iconName='search'
           mb={2}
           onChangeText={(title) => searchOnChange(title)}
         />
         <FlatList
           data={places}
-          w={["300", "300"]}
+          w={["320", "300"]}
+          height={heightPixel(390)}
           renderItem={({ item, index }) => {
             const accessibleObj = generateAccessibleObj(item.accessible);
             return (
@@ -43,8 +45,16 @@ const Navigate = ({ navigation }: any) => {
                 key={index}
                 activeOpacity={.84}
                 onPress={() => handleShowPlace(item)}
+                style={{
+                  borderBottomColor: accessibleObj.color,
+                  borderBottomWidth: 4
+                }}
               >
-                <HStack justifyContent='flex-start'>
+                <HStack
+                  alignItems='center'
+                  justifyContent='flex-start'
+                  position='relative'
+                >
                   <Image
                     source={{ uri: item.thumbImage }}
                     alt="Place thumb image"
@@ -56,26 +66,32 @@ const Navigate = ({ navigation }: any) => {
                       <Text>{item.title}</Text>
                       <Text
                         color='#323232'
-                        fontSize={12}
+                        fontSize={11.3}
+                        maxWidth='5/6'
                       >
                         {item.locality}
                       </Text>
                     </View>
-                    <HStack alignItems='center'>
-                      <Octicons
-                        name="dot-fill"
-                        size={16}
-                        color={accessibleObj.color}
-                        style={{ marginRight: 4 }}
-                      />
+                    <View mt='1' >
                       <Text
-                        color={accessibleObj.color}
-                        fontSize={13}
+                        fontSize={11}
+                        color='#707070'
                       >
-                        {accessibleObj.text}
+                        {item.accessibilityList.map(accessible => accessible.title).join(', ').substring(0, 25)}...
                       </Text>
-                    </HStack>
+
+                    </View>
                   </VStack>
+                  <Octicons
+                    name="dot-fill"
+                    size={21}
+                    color={accessibleObj.color}
+                    style={{
+                      marginRight: 4,
+                      position: 'absolute',
+                      right: 0
+                    }}
+                  />
                 </HStack>
               </PlaceInfoButton>
             )

@@ -4,10 +4,6 @@ import { PRIMARY, TERTIARY, WHITE } from "../../styles/colors";
 import useAuthContext from "src/contexts/auth-context/use-auth-context";
 import { View } from "native-base";
 
-const Image = styled.Image`
-  width: 120px;
-`;
-
 const QuestionBtn = styled.TouchableOpacity`
   background-color: ${WHITE};
   border-radius: 50px;

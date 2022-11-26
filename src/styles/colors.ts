@@ -28,5 +28,5 @@ export const GRAY_DARK = '#323232';
 
 // ACTIONS
 export const SUCCESS = '#AED655';
-export const WARNING = '#DFC363';
+export const WARNING = '#F3A32B';
 export const ALERT = '#EA492A';
