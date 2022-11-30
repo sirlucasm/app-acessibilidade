@@ -18,7 +18,7 @@ export const usePlace = () => {
       return;
     }
 
-    placeData = places.filter((place) => (
+    placeData = loadedPlaces.filter((place) => (
       (place.title.toLowerCase().includes(search.toLowerCase()) ||
       (place.locality.toLowerCase().includes(search.toLowerCase())) ||
       (place.accessibilityList.map(al => al.title).join(',').toLowerCase().includes(search.toLowerCase()))
